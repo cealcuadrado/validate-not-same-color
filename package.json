@@ -21,6 +21,8 @@
     "@angular/router": "~8.0.0",
     "@fortawesome/fontawesome-free": "^5.15.4",
     "bootstrap": "^5.1.1",
+    "ngx-color": "^7.2.0",
+    "ngx-toastr": "^11.3.3",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
