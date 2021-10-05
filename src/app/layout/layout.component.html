@@ -1,20 +1,25 @@
-<form>
+<form [formGroup]="colorForm" (ngSubmit)="onSubmit()" >
   <div class="row">
     <div class="col-12 col-lg-6 mb-3">
       <div class="form-group">
         <label>Color de fondo</label>
-        <color-circle></color-circle>
+        <color-circle width="100%" (onChangeComplete)="setColorBackground($event)"></color-circle>
       </div>
+      <p>Color de fondo: {{colorForm.controls['colorBackground'].value}}</p>
     </div>
     <div class="col-12 col-lg-6 mb-3">
       <div class="form-group">
         <label>Color de fuente</label>
-        <color-circle></color-circle>
+        <color-circle width="100%" (onChangeComplete)="setColorFont($event)"></color-circle>
       </div>
+      <p>Color de fuente: {{colorForm.controls['colorFont'].value}}</p>
     </div>
   </div>
   <hr/>
-  <button class="btn btn-primary">
+  <button type="submit" class="btn btn-primary me-1" [disabled]="colorForm.invalid">
     Enviar
+  </button>
+  <button type="button" class="btn btn-danger" (click)="resetForm()">
+    Resetear Formulario
   </button>
 </form>
