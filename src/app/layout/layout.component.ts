@@ -23,7 +23,7 @@ export class LayoutComponent implements OnInit {
     this.colorForm = this.fb.group({
       colorBackground: this.fb.control('', [Validators.required]),
       colorFont: this.fb.control('', [Validators.required]),
-    }, {validator: fooColors});
+    }, {validator: notSameColors});
   }
 
   setColorBackground(event: ColorEvent): void {
@@ -65,7 +65,7 @@ export class LayoutComponent implements OnInit {
   }
 }
 
-const fooColors: ValidatorFn = (fg: FormGroup) => {
+const notSameColors: ValidatorFn = (fg: FormGroup) => {
   const background = fg.get('colorBackground').value;
   const font = fg.get('colorFont').value;
 
