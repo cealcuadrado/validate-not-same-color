@@ -14,7 +14,7 @@ export class LayoutComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit() {
@@ -25,11 +25,25 @@ export class LayoutComponent implements OnInit {
   }
 
   setColorBackground(event: ColorEvent): void {
-    this.colorForm.controls['colorBackground'].setValue(event.color.hex);
+    let hex = event.color.hex;
+    let currentColorFont = this.colorForm.controls['colorFont'].value;
+
+    if (hex != currentColorFont) {
+      this.colorForm.controls["colorBackground"].setValue(event.color.hex);
+    } else {
+      this.toastr.error('El color de fondo escogido es igual al color de fuente');
+    }
   }
 
   setColorFont(event: ColorEvent): void {
-    this.colorForm.controls['colorFont'].setValue(event.color.hex);
+    let hex = event.color.hex;
+    let currentColorBackground = this.colorForm.controls['colorBackground'].value;
+
+    if (hex != currentColorBackground) {
+      this.colorForm.controls["colorFont"].setValue(event.color.hex);
+    } else {
+      this.toastr.error('El color de fuente escogido es igual al color de fondo');
+    }
   }
 
   onSubmit(): void {
